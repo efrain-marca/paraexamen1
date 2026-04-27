@@ -1,0 +1,28 @@
+<main >
+  <section >
+    <h1>Dashboard</h1>
+    <div class="actions">
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+    <p>Has iniciado sesión correctamente.</p>
+    <p *ngIf="userName">Bienvenido, {{ userName }}.</p>
+
+    <section class="inserted-form">
+      <h2>Formularios guardados</h2>
+      <p *ngIf="loading">Cargando formularios...</p>
+      <p *ngIf="error" class="error">{{ error }}</p>
+      <p *ngIf="!loading && !forms.length">No hay formularios cargados aún.</p>
+
+      <div *ngFor="let form of forms" class="form-item">
+        <p><strong>Título:</strong> {{ form.title }}</p>
+        <p *ngIf="form.description"><strong>Descripción:</strong> {{ form.description }}</p>
+        <p><strong>Nombre:</strong> {{ form.name }}</p>
+        <p><strong>Email:</strong> {{ form.email }}</p>
+        <p *ngIf="form.phone"><strong>Teléfono:</strong> {{ form.phone }}</p>
+        <p *ngIf="form.category"><strong>Categoría:</strong> {{ form.category }}</p>
+        <p *ngIf="form.message"><strong>Mensaje:</strong> {{ form.message }}</p>
+        <hr />
+      </div>
+    </section>
+  </section>
+</main>

@@ -1,0 +1,33 @@
+.dashboard-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.dashboard-card {
+  width: min(520px, 100%);
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 1rem;
+}
+
+.actions {
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 0.95rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #2563eb;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
