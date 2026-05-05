@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService, FormResponse } from '../form.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -15,8 +16,20 @@ export class DashboardComponent implements OnInit {
   forms: FormResponse[] = [];
   loading = false;
   error = '';
+  searchTerm = '';
 
   constructor(private router: Router, private formService: FormService) {}
+  //el buscar
+  get filteredForms() {
+    if (!this.searchTerm) return this.forms;
+    return this.forms.filter(form =>
+      form.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      form.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      form.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      (form.description && form.description.toLowerCase().includes(this.searchTerm.toLowerCase())) ||
+      (form.category && form.category.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    );
+  }
 
   ngOnInit() {
     if (typeof window !== 'undefined') {

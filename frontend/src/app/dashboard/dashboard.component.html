@@ -10,13 +10,14 @@
     <section class="inserted-form">
       <div class="form-header">
         <h2>Formularios guardados</h2>
+        <input type="text" placeholder="Buscar formularios..." [(ngModel)]="searchTerm" class="search-input">
         <button (click)="addForm()" class="btn-add">+ Añadir formulario</button>
       </div>
       <p *ngIf="loading">Cargando formularios...</p>
       <p *ngIf="error" class="error">{{ error }}</p>
-      <p *ngIf="!loading && !forms.length">No hay formularios cargados aún.</p>
+      <p *ngIf="!loading && !filteredForms.length">No hay formularios cargados aún.</p>
 
-      <div *ngFor="let form of forms" class="form-item">
+      <div *ngFor="let form of filteredForms" class="form-item">
         <p><strong>Título:</strong> {{ form.title }}</p>
         <p *ngIf="form.description"><strong>Descripción:</strong> {{ form.description }}</p>
         <p><strong>Nombre:</strong> {{ form.name }}</p>
