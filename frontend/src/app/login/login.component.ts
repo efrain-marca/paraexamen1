@@ -26,6 +26,7 @@ export class LoginComponent {
         if (typeof window !== 'undefined') {
           localStorage.setItem('access_token', response.access_token);
           localStorage.setItem('user_name', response.user.name);
+          localStorage.setItem('user_id', response.user.id);
         }
         this.router.navigate(['/dashboard']);
       },

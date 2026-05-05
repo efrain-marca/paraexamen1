@@ -43,4 +43,16 @@ export class FormService {
     };
     return this.http.get<FormListResponse>(this.apiUrl, { params });
   }
+
+  create(formData: any): Observable<FormResponse> {
+    return this.http.post<FormResponse>(this.apiUrl, formData);
+  }
+
+  update(id: string | number, formData: any): Observable<FormResponse> {
+    return this.http.put<FormResponse>(`${this.apiUrl}/${id}`, formData);
+  }
+
+  delete(id: string | number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

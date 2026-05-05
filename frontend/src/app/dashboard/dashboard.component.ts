@@ -47,4 +47,28 @@ export class DashboardComponent implements OnInit {
     }
     this.router.navigate(['/login']);
   }
+
+  addForm() {
+    this.router.navigate(['/form']);
+  }
+
+  editForm(form: FormResponse) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('form_to_edit', JSON.stringify(form));
+    }
+    this.router.navigate(['/form']);
+  }
+
+  deleteForm(formId: string | number) {
+    if (confirm('¿Estás seguro de que deseas eliminar este formulario?')) {
+      this.formService.delete(formId).subscribe({
+        next: () => {
+          this.loadForms();
+        },
+        error: () => {
+          this.error = 'No se pudo eliminar el formulario.';
+        },
+      });
+    }
+  }
 }

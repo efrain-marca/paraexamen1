@@ -31,3 +31,61 @@ button {
   font-size: 1rem;
   cursor: pointer;
 }
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-header h2 {
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.btn-add {
+  background: #10b981;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  background: #059669;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-edit {
+  background: #f59e0b;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 80px;
+}
+
+.btn-edit:hover {
+  background: #d97706;
+}
+
+.btn-delete {
+  background: #ef4444;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 80px;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+

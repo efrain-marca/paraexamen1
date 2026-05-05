@@ -8,7 +8,10 @@
     <p *ngIf="userName">Bienvenido, {{ userName }}.</p>
 
     <section class="inserted-form">
-      <h2>Formularios guardados</h2>
+      <div class="form-header">
+        <h2>Formularios guardados</h2>
+        <button (click)="addForm()" class="btn-add">+ Añadir formulario</button>
+      </div>
       <p *ngIf="loading">Cargando formularios...</p>
       <p *ngIf="error" class="error">{{ error }}</p>
       <p *ngIf="!loading && !forms.length">No hay formularios cargados aún.</p>
@@ -21,6 +24,10 @@
         <p *ngIf="form.phone"><strong>Teléfono:</strong> {{ form.phone }}</p>
         <p *ngIf="form.category"><strong>Categoría:</strong> {{ form.category }}</p>
         <p *ngIf="form.message"><strong>Mensaje:</strong> {{ form.message }}</p>
+        <div class="form-actions">
+          <button (click)="editForm(form)" class="btn-edit">Editar</button>
+          <button (click)="deleteForm(form.id)" class="btn-delete">Eliminar</button>
+        </div>
         <hr />
       </div>
     </section>

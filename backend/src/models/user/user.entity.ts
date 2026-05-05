@@ -8,13 +8,13 @@ export class UserEntity {
   id: string;
 
   @Column({ length: 100 })
-  name: string;
+  name: string = '';
 
   @Column({ length: 100, unique: true })
-  email: string;
+  email: string = ''  ;
 
   @Column({ length: 255 })
-  password: string;
+  password: string = '';
 
   @OneToMany(() => FormEntity, (form) => form.user)
   forms: FormEntity[];

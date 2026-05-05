@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FormEntity } from 'src/models/form/form.entity';
+import { UserEntity } from 'src/models/user/user.entity';
 import { Like, Repository } from 'typeorm';
 import { CreateFormDto } from './dto/createform.dto';
 
@@ -9,6 +10,8 @@ export class FormService {
   constructor(
     @InjectRepository(FormEntity)
     private formRepository: Repository<FormEntity>,
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
   ) {}
 
   // LISTAR 
@@ -43,9 +46,14 @@ export class FormService {
 
   // CREAR
   async create(dto: CreateFormDto) {
+    const user = await this.userRepository.findOne({ where: { id: dto.userId } });
+    if (!user) {
+      throw new BadRequestException('El usuario especificado no existe. Debes iniciar sesión con un usuario válido.');
+    }
+
     const form = this.formRepository.create({
       ...dto,
-      user: { id: dto.userId } as any, //  relación
+      user,
     });
 
     return this.formRepository.save(form);

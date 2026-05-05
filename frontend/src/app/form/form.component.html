@@ -1,0 +1,90 @@
+<main>
+  <section>
+    <h1>{{ isEditing ? 'Editar Formulario' : 'Crear Nuevo Formulario' }}</h1>
+
+    <p *ngIf="error" class="error">{{ error }}</p>
+    <p *ngIf="success" class="success">{{ success }}</p>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="formData.title"
+          name="title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea
+          id="description"
+          [(ngModel)]="formData.description"
+          name="description"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="formData.name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="formData.email"
+          name="email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Teléfono:</label>
+        <input
+          type="tel"
+          id="phone"
+          [(ngModel)]="formData.phone"
+          name="phone"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <input
+          type="text"
+          id="category"
+          [(ngModel)]="formData.category"
+          name="category"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensaje:</label>
+        <textarea
+          id="message"
+          [(ngModel)]="formData.message"
+          name="message"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="loading">
+          {{ loading ? 'Procesando...' : isEditing ? 'Actualizar' : 'Crear' }}
+        </button>
+        <button type="button" (click)="cancel()" [disabled]="loading">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </section>
+</main>
